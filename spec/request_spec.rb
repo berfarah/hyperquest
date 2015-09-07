@@ -25,7 +25,9 @@ describe Hyperquest::Request do
     end
 
     context "given multiple urls" do
-      let(:data) { ["http://google.com", "http://google.com.mx"] }
+      # Using reddit.com because of bug found in benchmark relating
+      # to body of this url
+      let(:data) { ["http://google.com", "http://reddit.com"] }
 
       it "has keys corresponding to the array" do
         expect(subject.keys).to match_array(data)

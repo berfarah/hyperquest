@@ -16,15 +16,15 @@ type Response struct {
 	Err           string `json:"error"`
 }
 
-func request(data *C.char, req func(string) (*http.Response, error)) string {
+func request(data *C.char, req func(string) (*http.Response, error)) *C.char {
 	uris := []string{}
 	err := json.Unmarshal([]byte(C.GoString(data)), &uris)
 	if err != nil {
-		return err.Error()
+		return C.CString(err.Error())
 	}
 
 	if len(uris) == 0 || (len(uris) == 1 && uris[0] == "") {
-		return "[]"
+		return C.CString("[]")
 	}
 
 	c := make(chan *Response)
@@ -42,10 +42,10 @@ func request(data *C.char, req func(string) (*http.Response, error)) string {
 
 	b, err := json.Marshal(result)
 	if err != nil {
-		return "{}"
+		return C.CString("{}")
 	}
 
-	return string(b)
+	return C.CString(string(b))
 }
 
 func readRequest(uri string, r *http.Response, err error) *Response {
@@ -69,12 +69,12 @@ func readRequest(uri string, r *http.Response, err error) *Response {
 }
 
 //export get
-func get(data *C.char) string {
+func get(data *C.char) *C.char {
 	return request(data, http.Get)
 }
 
 //export head
-func head(data *C.char) string {
+func head(data *C.char) *C.char {
 	return request(data, http.Head)
 }
 
