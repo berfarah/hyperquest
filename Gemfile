@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gemspec
 
 group :test do
+  gem "rspec"
   gem "simplecov", "~> 0.10", :require => false
   gem "redcarpet"
 end

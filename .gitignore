@@ -7,5 +7,5 @@
 /pkg/
 /spec/reports/
 /tmp/
-hyperquest*.h
-hyperquest*.so
+hyperquest.h
+hyperquest.so
