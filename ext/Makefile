@@ -12,3 +12,7 @@ else
 	curl https://github.com/berfarah/hyperquest/1.0.0/hyperquest-`uname -s`-`uname -m`.tar.gz | tar zx
 endif
 endif
+
+# These are required to install successfully
+clean:
+install:
