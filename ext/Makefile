@@ -9,7 +9,7 @@ ifneq (,$(findstring go1.5,$(check)))
 	go build -buildmode=c-shared -o hyperquest.so hyperquest.go
 else
 	@echo Can't compile natively, instead downloading binary from github.
-	curl https://github.com/berfarah/hyperquest/1.0.0/hyperquest-`uname -s`-`uname -m`.tar.gz | tar zx
+	curl -L https://github.com/berfarah/hyperquest/releases/download/1.0.0/hyperquest-`uname -s`-`uname -m`.tar.gz | tar zx
 endif
 endif
 
