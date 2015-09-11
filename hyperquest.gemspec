@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "hyperquest"
-  spec.version       = "0.1.2"
+  spec.version       = "1.0.0"
   spec.authors       = ["Bernardo Farah"]
   spec.email         = ["ber@bernardo.me"]
 
